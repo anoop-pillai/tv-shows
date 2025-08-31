@@ -1,0 +1,79 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row style="justify-content: center">
+    <span>Tv Shows</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form [formGroup]="searchForm">
+  <div
+    style="
+      display: flex;
+      grid-template-columns: 1fr;
+      justify-content: center;padding-bottom: 5px;
+      width: 100%;
+    "
+  >
+
+    <mat-form-field style="width: 30%;padding-right: 5px;">
+        
+      <input
+        matInput
+        formControlName="query"
+        placeholder="Search for a show..."
+       
+    /></mat-form-field>
+    <button matFab (click)="search()"><mat-icon>search</mat-icon></button>
+  </div>
+</form>
+
+@if (searching()) {
+<mat-progress-spinner mode="indeterminate" class="center-screen" ></mat-progress-spinner>
+}
+
+<!-- <div style="display: grid;
+      grid-template-columns: 20% 20% 20% 20% 20%;
+      grid-gap: 5px;
+      place-items: center;"> -->
+
+<!--<mat-grid-list cols="5" rowHeight="6:9" gutterSize="10px"> -->
+<div
+  style="padding-top: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+  "
+>
+  @for (show of shows(); track $index) {
+  <mat-card (click)="details(show.show.id)">
+    <mat-card-header>
+      <mat-card-title>{{ show.show.name }}</mat-card-title>
+      <mat-card-subtitle>
+        @if (show.show.rating.average) {
+        <app-star-rating [rating]="show.show.rating.average"></app-star-rating>
+        }@else{
+        <span>Unrated</span>
+        }
+      </mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      @if (show?.show?.image?.medium) {
+      <img
+        mat-card-image
+        [src]="show?.show?.image?.medium"
+        style="width: 100%"
+        alt="{{ show?.show?.name }}"
+      />
+
+      }
+      <!--   <p>{{ show.show.summary }}</p>
+                                          Genre: {{ show.show.genres.join(', ') }}-->
+    </mat-card-content>
+    <mat-card-footer>
+      <div style="display: flex; padding: 20px">Genre: {{ show.show.genres.join(', ') }}</div>
+    </mat-card-footer>
+  </mat-card>
+
+  }
+</div>
+<!-- </div> </mat-grid-list>-->

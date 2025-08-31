@@ -1,0 +1,15 @@
+<div class="stars">
+@for ( state of starStates;track  $index) {
+    @switch (state) {
+      @case ('full') {
+        <span class="star">&#9733;</span> <!-- Full star -->
+      }
+      @case ('half') {
+        <span class="star half">&#9733;</span> <!-- Half star -->
+      }
+      @case ('empty') {
+        <span class="star">&#9734;</span> <!-- Empty star -->
+      }
+    }
+  }
+</div>
