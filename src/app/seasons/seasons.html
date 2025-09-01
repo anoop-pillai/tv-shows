@@ -1,20 +1,26 @@
-<div style="padding-top: 5px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+<div style="padding: 5px;
+    display: block;
+    grid-template-columns: 1;
     grid-gap: 10px;"> 
     <mat-list-item> 
 @for (season of seasons(); track $index) {
   
-     
+     <mat-card >
     <h3>Season {{ season.number }}: {{ season.name }}</h3>
     <p>Premiere Date: {{ season.premiereDate }}</p>
     <p>End Date: {{ season.endDate }}</p>
+     <img
+        mat-card-image
+        [src]="season.image.medium"
+        style="width: 20%"
+        alt="{{ season.name }}"
+      />
     <p>Summary: 
 
         <div [innerHTML]="season.summary"></div>
-  
 
-  
+</mat-card>
+
 }
 </mat-list-item>
 </div>

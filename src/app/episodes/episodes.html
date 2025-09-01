@@ -2,12 +2,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 10px;"> 
-@for (item of episodes(); track $index) {
+@for (episode of paginatedEpisodes(); track $index) {
   <mat-card>
-    <h3>{{ item.name }}</h3>
-    <p>Season: {{ item.season }}</p>
-    <p>Episode: {{ item.number }}</p>
-    <img [src]="item.image.medium" alt="{{ item.name }}" style="width: 100%;" />
+    <h3>{{ episode.name }}</h3>
+    <p>Season: {{ episode.season }}</p>
+    <p>Episode: {{ episode.number }}</p>
+    <img [src]="episode.image.medium" alt="{{ episode.name }}" style="width: 100%;" />
   </mat-card>
 }
+
  </div>
+ <mat-paginator
+  [length]="episodes().length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)">
+</mat-paginator>

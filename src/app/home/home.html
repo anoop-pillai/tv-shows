@@ -10,9 +10,7 @@
       display: flex;
       grid-template-columns: 1fr;
       justify-content: center;padding-bottom: 5px;
-      width: 100%;
-    "
-  >
+      width: 100%;">
 
     <mat-form-field style="width: 30%;padding-right: 5px;">
         
@@ -43,7 +41,7 @@
     grid-gap: 10px;
   "
 >
-  @for (show of shows(); track $index) {
+  @for (show of shows(); track show.show.id) {
   <mat-card (click)="details(show.show.id)">
     <mat-card-header>
       <mat-card-title>{{ show.show.name }}</mat-card-title>
@@ -75,5 +73,9 @@
   </mat-card>
 
   }
+  <!-- @if (shows().length === 0) {
+  <div style="width: 100%;justify-content: center; display: flex;">No results found.</div>
+
+} -->
 </div>
 <!-- </div> </mat-grid-list>-->
