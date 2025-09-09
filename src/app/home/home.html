@@ -4,45 +4,33 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<form [formGroup]="searchForm">
-  <div
-    style="
-      display: flex;
-      grid-template-columns: 1fr;
-      justify-content: center;padding-bottom: 5px;
-      width: 100%;">
+<div style="
+ display: flex;
+  justify-content: center;
+  align-items: center;">
+  <form [formGroup]="searchForm" >
+  <mat-form-field  style=" width: 35vw; padding: 10px 10px" >
+    
+    <input matInput id="query" name="query" formControlName="query" placeholder="search shows" />
+  </mat-form-field>
 
-    <mat-form-field style="width: 30%;padding-right: 5px;">
-        
-      <input
-        matInput
-        formControlName="query"
-        placeholder="Search for a show..."
-       
-    /></mat-form-field>
-    <button matFab (click)="search()"><mat-icon>search</mat-icon></button>
-  </div>
-</form>
+  <button (click)="search()" mat-icon-button  style="
+ height: 56px; /* match input height */
+  width: 56px;padding: 10px 10px;
+">
+    <mat-icon>search</mat-icon>
+  </button></form>
+
+</div>
 
 @if (searching()) {
 <mat-progress-spinner mode="indeterminate" class="center-screen" ></mat-progress-spinner>
 }
 
-<!-- <div style="display: grid;
-      grid-template-columns: 20% 20% 20% 20% 20%;
-      grid-gap: 5px;
-      place-items: center;"> -->
-
-<!--<mat-grid-list cols="5" rowHeight="6:9" gutterSize="10px"> -->
 <div
-  style="padding-top: 5px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 10px;
-  "
->
+   class="container">
   @for (show of shows(); track show.show.id) {
-  <mat-card (click)="details(show.show.id)">
+  <mat-card (click)="details(show.show.id)" class="card">
     <mat-card-header>
       <mat-card-title>{{ show.show.name }}</mat-card-title>
       <mat-card-subtitle>
@@ -59,9 +47,17 @@
       <img
         mat-card-image
         [src]="show?.show?.image?.medium"
-        style="width: 100%"
+        class="full-width"
         alt="{{ show?.show?.name }}"
       />
+
+      }@else{
+        <img
+          mat-card-image
+          src="default_card_image.png"
+          class="full-width"
+          alt="Placeholder"
+        />
 
       }
       <!--   <p>{{ show.show.summary }}</p>

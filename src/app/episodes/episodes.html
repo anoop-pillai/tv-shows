@@ -7,7 +7,7 @@
     <h3>{{ episode.name }}</h3>
     <p>Season: {{ episode.season }}</p>
     <p>Episode: {{ episode.number }}</p>
-    <img [src]="episode.image.medium" alt="{{ episode.name }}" style="width: 100%;" />
+    <img [src]="episode?.image?.medium"  style="width: 100%;" />
   </mat-card>
 }
 

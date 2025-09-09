@@ -12,11 +12,12 @@ import { MatInput } from '@angular/material/input';
 import { StarRating } from "../star-rating/star-rating";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { delay } from 'rxjs';
+import { MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-home',
   imports: [ReactiveFormsModule, MatCardModule, MatCard, MatToolbar, MatCardImage, MatIcon, MatFormField, MatInput,
-     MatToolbarRow, StarRating,MatProgressSpinnerModule],
+    MatToolbarRow, StarRating, MatProgressSpinnerModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

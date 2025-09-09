@@ -31,11 +31,9 @@ ngOnInit() {
 }
 
 updatePaginatedItems() {
-  console.log("Updating paginated items for page:", this.currentPage, "with page size:", this.pageSize,'total',this.episodes());
     const start = this.currentPage * this.pageSize;
     const end = start + this.pageSize;
     this.paginatedEpisodes.set(this.episodes().slice(start, end));
-    console.log("Paginated items:", this.paginatedEpisodes.length);
   }
 
   onPageChange(event: PageEvent) {

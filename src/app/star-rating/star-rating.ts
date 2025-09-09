@@ -10,15 +10,12 @@ import { Component, Input, TrackByFunction } from '@angular/core';
 export class StarRating {
 
   @Input() rating: number = 0; // Rating out of 10
-
   get starStates(): ('full' | 'half' | 'empty')[] {
-    const fiveStarRating = this.rating / 2;
     const states: ('full' | 'half' | 'empty')[] = [];
-
-    for (let i = 1; i <= 5; i++) {
-      if (fiveStarRating >= i) {
+    for (let i = 1; i <= 10; i++) {
+      if (this.rating >= i) {
         states.push('full');
-      } else if (fiveStarRating >= i - 0.5) {
+      } else if (this.rating >= i - 0.5) {
         states.push('half');
       } else {
         states.push('empty');

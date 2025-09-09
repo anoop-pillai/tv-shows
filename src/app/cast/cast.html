@@ -1,12 +1,12 @@
-<div style="padding-top: 5px;
+<div style="padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 10px;">
     @for (cast of casts(); track $index) {
   <mat-card>
-    <h3>{{ cast.character.name }}</h3>
-    <p>Portrayed by: {{ cast.person.name }}</p>
-    <img [src]="cast.character.image.original" alt="{{ cast.character.name }}"  style="width: 100%;"/>
+    <mat-card-title>{{ cast.character.name }}</mat-card-title>
+    <mat-card-subtitle>Portrayed by: {{ cast.person.name }}</mat-card-subtitle>
+    <img [src]="cast.character.image.medium" alt="{{ cast.character.name }}"  class="full-width"/>
   </mat-card>
 }
 </div>
