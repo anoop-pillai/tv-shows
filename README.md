@@ -2,9 +2,9 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
-Responsive home page with Mat cards
-Details page with summary, cast,seasons with paginated episode components
-User ngRx store to keep search query, reviews in local storage
+* Responsive home page with Mat cards
+* Details page with summary, cast,seasons with paginated episode components
+* User ngRx store to keep search query, reviews in local storage
 
 ## Development server
 
