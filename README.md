@@ -4,7 +4,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 * Responsive home page with Mat cards
 * Details page with summary, cast,seasons with paginated episode components
-* User ngRx store to keep search query, reviews in local storage
+* Uses ngRx store to keep search query, reviews in local storage
 
 ## Development server
 
