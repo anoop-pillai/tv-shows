@@ -8,27 +8,27 @@
  display: flex;
   justify-content: center;
   align-items: center;">
-  <form [formGroup]="searchForm" >
-  <mat-form-field  style=" width: 35vw; padding: 10px 10px" >
-    
-    <input matInput id="query" name="query" formControlName="query" placeholder="search shows" />
-  </mat-form-field>
+  <form [formGroup]="searchForm">
+    <mat-form-field style=" width: 35vw; padding: 10px 10px">
 
-  <button (click)="search()" mat-icon-button  style="
- height: 56px; /* match input height */
+      <input matInput id="query" name="query" formControlName="query" placeholder="search shows" />
+    </mat-form-field>
+
+    <button (click)="search()" mat-icon-button style="
+ height: 56px;
   width: 56px;padding: 10px 10px;
 ">
-    <mat-icon>search</mat-icon>
-  </button></form>
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
 
 </div>
 
 @if (searching()) {
-<mat-progress-spinner mode="indeterminate" class="center-screen" ></mat-progress-spinner>
+<mat-progress-spinner mode="indeterminate" class="center-screen"></mat-progress-spinner>
 }
 
-<div
-   class="container">
+<div class="container">
   @for (show of shows(); track show.show.id) {
   <mat-card (click)="details(show.show.id)" class="card">
     <mat-card-header>
@@ -39,39 +39,29 @@
         }@else{
         <span>Unrated</span>
         }
-      </mat-card-subtitle
-      >
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       @if (show?.show?.image?.medium) {
-      <img
-        mat-card-image
-        [src]="show?.show?.image?.medium"
-        class="full-width"
-        alt="{{ show?.show?.name }}"
-      />
+      <img mat-card-image [src]="show?.show?.image?.medium" class="full-width" alt="{{ show?.show?.name }}" />
 
       }@else{
-        <img
-          mat-card-image
-          src="default_card_image.png"
-          class="full-width"
-          alt="Placeholder"
-        />
+      <img mat-card-image src="default_card_image.png" class="full-width" alt="Placeholder" />
 
       }
-      <!--   <p>{{ show.show.summary }}</p>
-                                          Genre: {{ show.show.genres.join(', ') }}-->
     </mat-card-content>
     <mat-card-footer>
-      <div style="display: flex; padding: 20px">Genre: {{ show.show.genres.join(', ') }}</div>
+      <div class="default-padding">Genre:
+        @if (show.show.genres.length) {
+        {{ show.show.genres.join(', ') }}
+        }@else{
+        <span>NA</span>
+        }
+      </div>
+
     </mat-card-footer>
   </mat-card>
 
   }
-  <!-- @if (shows().length === 0) {
-  <div style="width: 100%;justify-content: center; display: flex;">No results found.</div>
 
-} -->
 </div>
-<!-- </div> </mat-grid-list>-->

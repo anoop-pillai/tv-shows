@@ -1,13 +1,15 @@
-<div style="padding-top: 5px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 10px;"> 
+<div class="container"> 
 @for (episode of paginatedEpisodes(); track $index) {
   <mat-card>
-    <h3>{{ episode.name }}</h3>
+    <mat-card-title>
+      {{ episode.name }}
+    </mat-card-title>
+    <mat-card-content>
     <p>Season: {{ episode.season }}</p>
     <p>Episode: {{ episode.number }}</p>
-    <img [src]="episode?.image?.medium"  style="width: 100%;" />
+    <img [src]="episode?.image?.medium"  class="full-width" />
+    <div [innerHTML]="episode.summary"></div>
+  </mat-card-content>
   </mat-card>
 }
 

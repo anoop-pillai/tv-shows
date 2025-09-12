@@ -1,19 +1,20 @@
 import { Component, Input, signal } from '@angular/core';
 import { ShowService } from '../service/show-service';
 import { Episode } from '../../models/Episode';
-import { MatCard } from "@angular/material/card";
+import { MatCard, MatCardModule } from "@angular/material/card";
 import { PageEvent } from '@angular/material/paginator';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-episodes',
-  imports: [MatCard, MatPaginator],
+  imports: [MatCard, MatPaginator, MatCardModule],
   templateUrl: './episodes.html',
   styleUrl: './episodes.css'
 })
 export class Episodes {
 constructor(private showService: ShowService) { }
 
+@Input() seasonId!: number;
 paginatedEpisodes = signal<Episode[]>([]);
 
   pageSize = 5;
@@ -23,10 +24,18 @@ paginatedEpisodes = signal<Episode[]>([]);
 episodes = signal<Episode[]>([]);
 
 ngOnInit() {
-  this.showService.getEpisodes(this.showId).subscribe(episodes => {
+  if(this.seasonId){
+  this.showService.getSeasonEpisodes(this.seasonId).subscribe(episodes => {
     this.episodes.set(episodes); 
      this.updatePaginatedItems();
   });
+  }else{
+    this.showService.getEpisodes(this.showId).subscribe(episodes => {
+    this.episodes.set(episodes); 
+     this.updatePaginatedItems();
+  });
+  }
+  
 
 }
 

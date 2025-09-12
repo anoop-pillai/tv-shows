@@ -1,14 +1,19 @@
-<div style="padding: 5px;
+<div style="padding: 10px;
     display: block;
     grid-template-columns: 1;
-    grid-gap: 10px;"> 
-    <mat-list-item> 
+    grid-gap: 20px;"> 
+    <mat-grid-list cols="1" rowHeight="2:1" [gutterSize]="'20px'" style="padding: 10px;">
+ 
 @for (season of seasons(); track season.id) {
   
-     <mat-card >
-    <h3>Season {{ season.number }}: {{ season.name }}</h3>
-    <p>Premiere Date: {{ season.premiereDate | date:'dd/MM/yyyy' }}</p>
+     <mat-card  style="margin-bottom: 10px;padding:10px"><mat-card-title>
+      Season {{ season.number }}: {{ season.name }}
+     </mat-card-title>
+     <mat-card-subtitle>
+          <p>Premiere Date: {{ season.premiereDate | date:'dd/MM/yyyy' }}</p>
     <p>End Date: {{ season.endDate | date:'dd/MM/yyyy' }}</p>
+     </mat-card-subtitle>    
+<mat-card-content>
      <img
         mat-card-image
         [src]="season?.image?.medium"
@@ -18,9 +23,16 @@
     <p>Summary: 
 
         <div [innerHTML]="season.summary"></div>
-
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Episodes </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-episodes [seasonId]="season.id"></app-episodes>
+  </mat-expansion-panel></mat-accordion>
+</mat-card-content>
 </mat-card>
 
 }
-</mat-list-item>
+</mat-grid-list>
 </div>

@@ -4,6 +4,7 @@ import { Home } from "./home/home";
 
 import { StoreModule } from '@ngrx/store';
 import { reviewReducer } from './store/review.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @Component({
   selector: 'app-root',

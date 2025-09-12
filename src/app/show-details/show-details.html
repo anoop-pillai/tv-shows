@@ -1,18 +1,34 @@
-<div style="width: 100%;display: flex;">
+<div style="width: 100%;display: flex; padding: 10px;">
   
   <div style="width: 50%;">
 <button mat-button (click)="goBack()"><mat-icon>arrow_back</mat-icon></button></div>
-<div style="width: 40%;">
+<div style="width: 30%;">
   <h1>
     {{ show?.name }}
   </h1></div>
 </div>
-<div >
+<div class="default-padding">
   <div style="padding: 5px; display:flex;gap:20px;">
-    <div style="width: 20%;"> 
-    <img mat-card-image [src]="show?.image?.original" style="width: 100%" alt="{{ show?.name }}" />
+    <div style="width: 40%;"> 
+    <img mat-card-image [src]="show?.image?.original" style="width: 80%" alt="{{ show?.name }}" />
     </div>
-      <div>
+    <div>
+      <mat-card>
+      <mat-card-header>
+        <mat-card-title>Trailer</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <youtube-player
+          [videoId]="videoId()"
+          height="100%"
+          width="100%"
+          (ready)="onReady($event)"
+          (stateChange)="onStateChange($event)"
+        ></youtube-player>
+      </mat-card-content>
+    </mat-card>
+    </div>
+      <div style="width: 80%;">
         <app-review-component [showId]="showId()"></app-review-component>
   </div>
   </div>
@@ -36,8 +52,8 @@
 
    
 
- <mat-tab-group style="width: 100%;height:fit-content;">
-        <mat-tab label="Summary">  <div [innerHTML]="show?.summary"></div> </mat-tab>
+ <mat-tab-group >
+        <mat-tab label="Summary">  <div [innerHTML]="show?.summary" class="default-padding"></div> </mat-tab>
         <mat-tab label="Cast"> <app-cast [showId]="showId()"></app-cast></mat-tab>
 
      @if (showId() > 0) {
@@ -45,7 +61,6 @@
 
            
     }
-<mat-tab label="Episodes"> <app-episodes [showId]="showId()"></app-episodes></mat-tab>
 </mat-tab-group>
 
 </div>

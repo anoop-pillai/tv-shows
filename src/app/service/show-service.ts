@@ -25,6 +25,10 @@ export class ShowService {
   {
     return this.http.get<Season[]>(`${this.baseUrl}shows/${id}/seasons`);
   }
+  getSeasonEpisodes(seasonId:number)
+  {
+    return this.http.get<Episode[]>(`${this.baseUrl}seasons/${seasonId}/episodes`);
+  }
 
   getCasts(showId:number)
   {
