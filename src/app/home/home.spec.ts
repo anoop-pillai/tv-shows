@@ -76,7 +76,6 @@ describe('Home Component', () => {
   it('should update queryString and call search when store emits query', () => {
     spyOn(component, 'search');
     (store as any).overrideSelector('selectSearchQuery', 'test-query');
-    store.refreshState();
     fixture.detectChanges();
     expect(component.queryString()).toBe('test-query');
     expect(component.search).toHaveBeenCalled();
