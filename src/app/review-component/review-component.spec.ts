@@ -1,23 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowDetails } from './show-details';
+import { ReviewComponent } from './review-component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
-describe('ShowDetails', () => {
-  let component: ShowDetails;
-  let fixture: ComponentFixture<ShowDetails>;
+describe('ReviewComponent', () => {
+  let component: ReviewComponent;
+  let fixture: ComponentFixture<ReviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ShowDetails],providers:[
+      imports: [ReviewComponent],providers:[
         provideHttpClient(),
         provideHttpClientTesting()
       ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShowDetails);
+    fixture = TestBed.createComponent(ReviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

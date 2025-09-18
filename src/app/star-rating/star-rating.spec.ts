@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarRating } from './star-rating';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('StarRating', () => {
   let component: StarRating;
@@ -8,7 +10,10 @@ describe('StarRating', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StarRating]
+      imports: [StarRating],providers:[
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     })
     .compileComponents();
 

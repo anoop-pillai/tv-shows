@@ -1,0 +1,33 @@
+<div style="height: 80%;">
+@for (review of reviews(); track review.id) {
+    <div>
+  <app-star-rating [rating]="review.rating"></app-star-rating>
+  <p>Comment: {{ review.comment }}</p>
+  <p>{{review.createdAt | date:'dd/MM/yyyy'}}</p>
+  <button matButton (click)="deleteReview(review.id)"><mat-icon>delete</mat-icon></button>
+  <button matButton (click)="editReview(review)"><mat-icon>edit</mat-icon></button>
+</div>
+}
+</div>
+<div style=" height: 20%;" class="default-padding">
+  <p>Leave a Review</p>
+  @if ( reviewForm.get('rating')?.hasError('required') && reviewForm.touched ) {
+      <mat-error>*Rating is required</mat-error>
+    }
+       @if ( (reviewForm.get('comment')?.hasError('required') || reviewForm.get('comment')?.hasError('minlength')) && reviewForm.touched ) {
+      <mat-error>*valid comment is required</mat-error>
+    }
+<form matForm [formGroup]="reviewForm">
+    <input matInput formControlName="rating" type="number" min="0" max="10" placeholder="Rating" />
+
+    <input formControlName="comment" type="text" placeholder="enter comment" />
+ 
+
+  <button matButton type ="submit" (click)="addReview()">  
+    @if (isEditing()) { Update Review } @else { Add Review }
+</button>
+@if (isEditing()) {
+  <button matButton (click)="cancelEdit()">Cancel</button>
+}
+</form>
+</div>
